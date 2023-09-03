@@ -1,6 +1,6 @@
 import { positions, colors, verticeCount } from "./data/cubeInfo";
 import { createUniformBuffer, createVertexBuffer } from "./utils/createBuffer";
-import shader from "./shaders/shader.wgsl";
+import shader from "./shaders/cubeShader.wgsl";
 import { mat4 } from "gl-matrix";
 import createViewProjection from "./utils/createViewProjection";
 import createTransform from "./utils/createTransform";
@@ -8,6 +8,8 @@ import "./styles/style.css";
 
 const canvas = document.getElementById("webgpu") as HTMLCanvasElement;
 const ctx = canvas.getContext("webgpu") as GPUCanvasContext;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 const render = async () => {
   const adaptater = (await navigator.gpu.requestAdapter()) as GPUAdapter;
@@ -111,7 +113,8 @@ const render = async () => {
   const modelMatrix = mat4.create();
   const modelViewProjectionMatrix = mat4.create();
   const viewProjectionMatrix = createViewProjection(
-    canvas.width / canvas.height
+    canvas.width / canvas.height,
+    [-3, 3, 5]
   );
   createTransform(modelMatrix);
   mat4.multiply(modelViewProjectionMatrix, viewProjectionMatrix, modelMatrix);
