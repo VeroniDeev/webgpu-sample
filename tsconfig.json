@@ -1,8 +1,13 @@
 {
     "compilerOptions": {
-        "module": "ES6",
+        "module": "ESNext",
         "moduleResolution": "Node",
         "target": "ES2017",
+        "strict": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "esModuleInterop": true,
         "types": [
             "node",
             "@webgpu/types"
