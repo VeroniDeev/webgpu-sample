@@ -38,4 +38,6 @@ const colors = new Float32Array([
   1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1,
 ]);
 
-export { positions, colors };
+const verticeCount = positions.length / 3;
+
+export { positions, colors, verticeCount };
