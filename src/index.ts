@@ -1,9 +1,10 @@
-import { positions, colors, verticeCount } from "./cubeInfo";
+import { positions, colors, verticeCount } from "./data/cubeInfo";
 import { createUniformBuffer, createVertexBuffer } from "./utils/createBuffer";
-import shader from "./shader.wgsl";
+import shader from "./shaders/shader.wgsl";
 import { mat4 } from "gl-matrix";
 import createViewProjection from "./utils/createViewProjection";
 import createTransform from "./utils/createTransform";
+import "./styles/style.css";
 
 const canvas = document.getElementById("webgpu") as HTMLCanvasElement;
 const ctx = canvas.getContext("webgpu") as GPUCanvasContext;
