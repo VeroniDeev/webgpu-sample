@@ -1,4 +1,4 @@
-# Project Title
+# WebGPU Sample
 
 This is a WebGPU sample that demonstrates the capabilities of this API. The sample showcases a 3D cube with multi-colored faces, and you can modify its position in the code. Please note that this project may not be suitable for everyone, as WebGPU availability depends on your web browser's support for the API.
 
