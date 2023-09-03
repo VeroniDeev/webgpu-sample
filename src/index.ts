@@ -6,6 +6,8 @@ import createViewProjection from "./utils/createViewProjection";
 import createTransform from "./utils/createTransform";
 import "./styles/style.css";
 
+const h1 = document.getElementById("handleError") as HTMLHeadingElement;
+
 // The canvas part (make sure to change the ID with the canvas ID; usually, the canvas ID is the same here).
 const canvas = document.getElementById("webgpu") as HTMLCanvasElement;
 const ctx = canvas.getContext("webgpu") as GPUCanvasContext;
@@ -159,8 +161,12 @@ render()
   .then(() => {
     console.log("Finish with success");
   })
-  .catch((err) => {
-    console.log("You got an error");
-    console.log("--------------------------------------------");
-    console.log(err);
+  .catch(() => {
+    console.log(
+      "You have no access to WebGPU. Please check: https://github.com/VeroniDeev/webgpu-sample/tree/main"
+    );
+    canvas.width = 0;
+    canvas.height = 0;
+    h1.innerHTML =
+      "You have no access to WebGPU. Please check <a href='https://github.com/VeroniDeev/webgpu-sample/tree/main'>this github</a>";
   });
