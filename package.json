@@ -5,7 +5,7 @@
   "main": "index.ts",
   "repository": "https://github.com/VeroniDeev",
   "author": "Veroni",
-  "license": "GNU",
+  "license": "LGPL-3.0-only",
   "private": false,
   "scripts": {
     "serve:dev": "webpack serve --mode development --config ./webpack.dev.js",

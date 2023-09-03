@@ -6,12 +6,15 @@ import createViewProjection from "./utils/createViewProjection";
 import createTransform from "./utils/createTransform";
 import "./styles/style.css";
 
+// The canvas part (make sure to change the ID with the canvas ID; usually, the canvas ID is the same here).
 const canvas = document.getElementById("webgpu") as HTMLCanvasElement;
 const ctx = canvas.getContext("webgpu") as GPUCanvasContext;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const render = async () => {
+const render = async (): Promise<void> => {
+  // We create a connexion between our application and the GPU with the adaptater and we request the GPU.
+  // We configure the WebGPU environement.
   const adaptater = (await navigator.gpu.requestAdapter()) as GPUAdapter;
   const device = (await adaptater.requestDevice()) as GPUDevice;
   const format = "rgba8unorm";
@@ -19,8 +22,14 @@ const render = async () => {
     device,
     format,
   });
+
+  // We create two buffer the first is the vertices (to make the cube forms)
+  // and the second is the color.
   const verticeBuffer = createVertexBuffer(device, positions);
   const colorBuffer = createVertexBuffer(device, colors);
+
+  // pipelineRender is used for drawing on the canvas. We configure it with
+  // vertices (in the vertex part) and colors (in both the vertex and fragment parts), specifying the drawing technique and depth.
   const pipelineRender = device.createRenderPipeline({
     layout: "auto",
     vertex: {
@@ -72,6 +81,8 @@ const render = async () => {
       format: "depth24plus",
     },
   });
+
+  // We create a uniform to configure the Model-View-Projection (MVP) matrix and bind it to location 0
   const uniformBuffer = createUniformBuffer(device);
   const uniformBindGroup = device.createBindGroup({
     layout: pipelineRender.getBindGroupLayout(0),
@@ -86,6 +97,8 @@ const render = async () => {
       },
     ],
   });
+
+  // This part is used to configure the canvas for the view and depth.
   const viewTexture = ctx.getCurrentTexture().createView();
   const depthTexture = device
     .createTexture({
@@ -94,6 +107,8 @@ const render = async () => {
       usage: GPUTextureUsage.RENDER_ATTACHMENT,
     })
     .createView();
+
+  // This part is a configuration for the Render Pass.
   const renderPassDescriptor: GPURenderPassDescriptor = {
     colorAttachments: [
       {
@@ -110,6 +125,8 @@ const render = async () => {
       depthStoreOp: "store",
     },
   };
+
+  // We configure the Model View Projection Matrix here.
   const modelMatrix = mat4.create();
   const modelViewProjectionMatrix = mat4.create();
   const viewProjectionMatrix = createViewProjection(
@@ -124,6 +141,8 @@ const render = async () => {
     modelViewProjectionMatrix as ArrayBuffer
   );
 
+  // We create and configure the Command Encoder and the Render Pass for drawing the scene.
+  // We set up the vertices and color buffer, and we add the uniform group
   const commandEncoder = device.createCommandEncoder();
   const renderPass = commandEncoder.beginRenderPass(renderPassDescriptor);
   renderPass.setPipeline(pipelineRender);

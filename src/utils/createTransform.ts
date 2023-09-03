@@ -1,5 +1,6 @@
 import { mat4, vec3 } from "gl-matrix";
 
+// This function is used to create a transformation for the model matrix.
 const createTransform = (
   model: mat4,
   rotation: vec3 = [0, 0, 0],

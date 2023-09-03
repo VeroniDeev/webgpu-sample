@@ -1,3 +1,4 @@
+// This function is used to create a Vertex Buffer.
 const createVertexBuffer = (
   device: GPUDevice,
   data: Float32Array,
@@ -14,6 +15,7 @@ const createVertexBuffer = (
   return buffer;
 };
 
+// This function is used to create a Uniform Buffer.
 const createUniformBuffer = (
   device: GPUDevice,
   gpuUsage: GPUBufferUsageFlags = GPUBufferUsage.UNIFORM |

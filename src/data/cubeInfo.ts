@@ -1,3 +1,6 @@
+// These parts are used to specify the cube data.
+// We have the positions, colors, and the number of vertices.
+
 const positions = new Float32Array([
   // front
   -1, -1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, -1, -1, 1,

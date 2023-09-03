@@ -1,5 +1,6 @@
 import { mat4, vec3 } from "gl-matrix";
 
+// This function is used to create a view projection matrix.
 const createViewProjection = (
   aspect: number,
   positionDirection: vec3 = [0, 0, 5],
