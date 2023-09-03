@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "ES6",
+        "moduleResolution": "Node",
+        "target": "ES2017",
+        "types": [
+            "node",
+            "@webgpu/types"
+        ]
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "webgpu-sample",
+  "version": "1.0.0",
+  "description": "This project is a sample to the new API WebGPU",
+  "main": "index.ts",
+  "repository": "https://github.com/VeroniDeev",
+  "author": "Veroni",
+  "license": "GNU",
+  "private": false,
+  "scripts": {
+    "serve:dev": "webpack serve --mode development --config ./webpack.dev.js",
+    "serve:prod": "webpack serve --mode production --config ./webpack.prod.js",
+    "build:dev": "webpack build --mode development --config ./webpack.dev.js",
+    "build:prod": "webpack build --mode production --config ./webpack.prod.js"
+  },
+  "devDependencies": {
+    "@webgpu/types": "^0.1.34",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.4",
+    "ts-shader-loader": "^2.0.2",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
+  }
+}
