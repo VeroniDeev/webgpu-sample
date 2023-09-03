@@ -12,7 +12,7 @@ struct Cube {
 @vertex
 fn VertexShader(@location(0) posi: vec4<f32>, @location(1) color: vec4<f32>) -> Cube{
     var cube: Cube;
-    cube.Position = posi;
+    cube.Position = uniforms.modelViewProjectionMatrix * posi;
     cube.VertexColor = color;
     return cube;
 }
