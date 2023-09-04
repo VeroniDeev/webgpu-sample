@@ -18,7 +18,7 @@ This is a WebGPU sample that demonstrates the capabilities of this API. The samp
 
 ![App Screenshot](./page_example.png)
 
-You can check with this [url](https://github.com/VeroniDeev/webgpu-sample/tree/main).
+You can check with this [url](webgpu-sample.vercel.app).
 
 ## Requirement
 
